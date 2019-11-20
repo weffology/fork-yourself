@@ -1,8 +1,8 @@
 This document outlines the base requirements for Project 2.
 
-### Requirements
+**Requirements**
 
-Your project must:
+**Your project must:**
 * Use a Node and Express Web Server;
 * Be backed by a MySQL Database an ORM (not necessarily Sequelize);
 * Have both GET and POST routes for retrieving and adding new data;

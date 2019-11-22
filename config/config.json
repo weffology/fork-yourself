@@ -2,14 +2,14 @@
   "development": {
     "username": "root",
     "password": "root",
-    "database": "fork-yourself",
+    "database": "fork_yourself",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
     "password": "root",
-    "database": "fork-yourself",
+    "database": "fork_yourself",
     "host": "localhost",
     "dialect": "mysql",
     "logging": false

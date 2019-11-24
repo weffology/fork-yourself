@@ -1,22 +1,29 @@
-//dependencies
 var path = require("path");
 
-//routes
+// require custom middleware to check if user is logged in
+var isAuthenticated = require("../config/middleware/isAuthenticated");
+
 module.exports = function(app) {
-  
-  //GET for homepage
+
   app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/index.html"));
+    // If the user already has an account send them to their account page
+    if (req.user) {
+      res.redirect("/account");
+    }
+    res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
-  
-  //GET for results page
-  app.get("/results", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/results.html"));
+
+  app.get("/login", function(req, res) {
+    // If the user already has an account send them to their account page
+    if (req.user) {
+      res.redirect("/account");
+    }
+    res.sendFile(path.join(__dirname, "../public/login.html"));
   });
-  
-  //GET for account details page
-  app.get("/account", function(req, res) {
+
+  // if user is not logged in & tries to access this route they will be redirected to the signup page
+  app.get("/account", isAuthenticated, function(req, res) {
     res.sendFile(path.join(__dirname, "../public/account.html"));
   });
-  
+
 };

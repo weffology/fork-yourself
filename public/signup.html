@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- TITLE -->
+    <title>Sign Up | Fork Yourself</title>
+
+    <!--STYLE-->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <!-- ICON LIBRARY -->
+    <script src="https://kit.fontawesome.com/d5fa5f8504.js" crossorigin="anonymous"></script>
+
+    <!--BOOTSTRAP-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!--JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!--JAVASCRIPT-->
+    <script type="text/javascript" src="js/signup.js"> </script>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron vertical-center">
+            <h1 class="display-4">Fork Yourself!</h1>
+            <p class="lead">Put that on your plate and eat it.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="signupForm">
+
+            <h3>Create an account</h3>
+            <br>
+            <form>
+                <div class="form-group">
+                    <label for="userName">Username:</label>
+                    <input type="text" placeholder="Name" id="userName">
+                </div>
+
+                <div class="form-group">
+                    <label for="userEmail">Email:</label>
+                    <input type="email" placeholder="Email Address" id="userEmail">
+                </div>
+
+                <div class="form-group">
+                    <label for="userTel">Telephone:</label>
+                    <input type="tel" placeholder="Telephone Number" id="userTel">
+                </div>
+
+                <div class="form-group">
+                    <label for="userPassword1">Password:</label>
+                    <input type="text" placeholder="Password" id="userPassword1">
+                </div>
+
+                <div class="form-group">
+                    <label for="userPassword2">Enter password again:</label>
+                    <input type="text" placeholder="Password" id="userPassword2">
+                </div>
+
+                <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span> <span class="msg"></span>
+                </div>
+
+                <button type="submit" id="submitBtn">Submit</button>
+
+            </form>
+            <br />
+            <p>Or log in <a href="/login">here</a></p>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

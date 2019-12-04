@@ -28,13 +28,6 @@ module.exports = function(app) {
     });
   });
 
-  // app.get("/api/recipes/", function(req, res) {
-  //   db.recipes.findAll({})
-  //     .then(function(dbrecipes) {
-  //       res.json(dbrecipes);
-  //     });
-  // });
-
   app.get("/logout", function(req, res) {
     req.logout();
     res.redirect("/");

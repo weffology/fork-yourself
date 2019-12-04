@@ -2,30 +2,54 @@ $(document).ready(function () {
   
   //establish global variables
   var recipe_name = "";
-  var image_URL = "";
   var recipe_URL = "";
   var diet_label = "";
   var health_label = "";
-  var ingredients = "";
+  var ingredients = $("#searchIngredient").val().trim();
   var calories = 0;
   var yields = 0;
+  var minCal = $("#minCal").val().trim();
+  var maxCal = $("#maxCal").val().trim();
+  var dietLabelSelected = $("#dietLabel").val();
+  var healthLabelSelected = $("#healthLabel").val();
+  var minResult = 0;
+  var maxResult = 5;
+  var appID = "5c3e07f7";
+  var apiKey = "1316c756340d9d944deb3b65ac2a7e52";
+  
+
+  //create button listener for searching
+  $("#searchBtn").click(function (event) {
+    event.preventDefault();
+    getRecipes();
+  });
 
   //create function that searches Edamam API for recipes based on certain parameters
   function getRecipes() {
-    var ingredient = $("#searchIngredient").val().trim();
-    var dietLabelSelected = $("#dietLabel").val();
-    var healthLabelSelected = $("#healthLabel").val();
-    var minCal = $("#minCal").val().trim();
-    var maxCal = $("#maxCal").val().trim();
-    var minResult = 0;
-    var maxResult = 10;
-    var appID = "5c3e07f7";
-    var apiKey = "1316c756340d9d944deb3b65ac2a7e52";
-    var queryURL = "https://api.edamam.com/search?q=" + ingredient + "&app_id=" + appID + "&app_key=" + apiKey + "&from=" + minResult + "&to=" + maxResult + "&calories=" + minCal + "-" + maxCal + "&diet=" + dietLabelSelected + "&health=" + healthLabelSelected;
+    var queryURL ;
+
+    if (($("#dietLabel").val() === "all") && ($("#healthLabel").val() === "none")) {
+      queryURL = "https://api.edamam.com/search?q=" + ingredients + "&app_id=" + appID + "&app_key=" + apiKey + "&from=" + minResult + "&to=" + maxResult + "&calories=" + minCal + "-" + maxCal;
+    } 
+    else if(($("#dietLabel").val() === "all") && ($("#healthLabel").val() !== "none")){
+      healthLabelSelected = $("#healthLabel").val();
+      queryURL = "https://api.edamam.com/search?q=" + ingredients + "&app_id=" + appID + "&app_key=" + apiKey + "&from=" + minResult + "&to=" + maxResult + "&calories=" + minCal + "-" + maxCal + "&health=" + healthLabelSelected;
+    }
+    else if (($("#dietLabel").val() !== "all") && ($("#healthLabel").val() === "none")) {
+      dietLabelSelected = $("#dietLabel").val();
+      queryURL = "https://api.edamam.com/search?q=" + ingredients + "&app_id=" + appID + "&app_key=" + apiKey + "&from=" + minResult + "&to=" + maxResult + "&calories=" + minCal + "-" + maxCal + "&diet=" + dietLabelSelected;
+    } 
+    else {
+      dietLabelSelected = $("#dietLabel").val();
+      healthLabelSelected = $("#healthLabel").val();
+      var queryURL = "https://api.edamam.com/search?q=" + ingredients + "&app_id=" + appID + "&app_key=" + apiKey + "&from=" + minResult + "&to=" + maxResult + "&calories=" + minCal + "-" + maxCal + "&diet=" + dietLabelSelected + "&health=" + healthLabelSelected;
+    };
+    console.log(queryURL);
     $.ajax({
       url: queryURL,
       method: "GET"
     }).then(function (response) {
+      $("#foodData").html("<h3>Your results:</h3>");
       for (var i = 0; i < response.hits.length; i++) {
         console.log(response.hits[i])
         recipe_name = response.hits[i].recipe.label;
@@ -36,8 +60,9 @@ $(document).ready(function () {
         ingredients = response.hits[i].recipe.ingredientLines;
         calories = response.hits[i].recipe.calories;
         yields = response.hits[i].recipe.yield;
-        $("#foodData").html("<h3>Your results:</h3>");
+        //
         returnRecipes();
+
       }
     })
   };
@@ -57,32 +82,28 @@ $(document).ready(function () {
     divRecipes.append("</ul></p>");
     divRecipes.append("<p><strong>Calories:</strong> " + Math.round(calories) + "</p>");
     divRecipes.append("<p><strong>Yields:</strong> " + yields + "</p>");
+    divRecipes.append("<button class='saveRecipeBtn' data-recipe-name='" + recipe_name + "' data-recipe-url='" + recipe_URL + "'>Save this delicious recipe!</button>");
+    divRecipes.append("<p>------------------------------------------------------------------------<p>");
     $("#foodData").append(divRecipes);
   };
 
-  $("#searchBtn").click(function (event) {
-    event.preventDefault();
-    getRecipes();
-  });
-
   $.get("/api/user_data").then(function(data) {
-    console.log(data.email);
-    console.log(data.id);
     user_ID = data.id;
   });
 
-  $("#saveBtn").click(function (event) {
-    var newSave = {
+  $(document).on("click", ".saveRecipeBtn", function () {
+    console.log("clicked to save recipe");
+    var recipe_name = $(this).attr("data-recipe-name");
+    var recipe_url = $(this).attr("data-recipe-url");
+    var newSavedRecipe = {
       user_ID: user_ID,
       recipe_name: recipe_name,
-      recipe_URL: recipe_URL
-    };
-    console.log(newSave);
-    $.post("/api/recipes/", newSave, function() {
-      console.log("----- recipes saved -----")
+      recipe_URL: recipe_url,
+    }
+    console.log(newSavedRecipe);
+    $.post("/api/recipes", newSavedRecipe, function () {
+      console.log("----- recipe saved -----");
+    });
   });
-});
-
-
 
 });

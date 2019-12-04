@@ -2,8 +2,8 @@ body {
     text-align: center;
 }
 
-/* .container {
-    margin: auto;
-    display: inline-block;;
-    text-align: center;
-} */
+.jumbotron {
+    background-image: url("../assets/header.jpg");
+    background-size: cover;
+    padding: 50px;
+  }

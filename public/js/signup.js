@@ -1,40 +1,42 @@
 $(document).ready(function() {
+  var newEmail = $("#email-input");
+  var newPassword = $("#password-input");
 
-  var emailInput = $("#userEmail").val().trim();
-  var passwordInput = $("#userPassword").val().trim();
-
-  $("#submitBtn").click(function (event) {
+  $("#newPerson").click(function(){
     event.preventDefault();
-    var userData = {
-      email: emailInput,
-      password: passwordInput
-    };
-
-    if (!userData.email || !userData.password) {
-      return;
-    }
-    // If we have an email and password, run the signUpUser function
-    signUpUser(userData.email, userData.password);
-    emailInput.val("");
-    passwordInput.val("");
-  });
-
-  // Does a post to the signup route. If successful, we are redirected to the members page
-  // Otherwise we log any errors
-  function signUpUser(email, password) {
-    $.post("/api/signup", {
-      email: email,
-      password: password
-    })
+    newPeople();
+    });
+    
+     function newPeople() { 
+      var newUser = {
+        email: newEmail.val().trim(),
+        password: newPassword.val().trim()
+      };
+      if (!newUser.email || !newUser.password) {
+        alert("Please enter a valid email and password")
+        window.location.replace("/signup");
+        return;
+      }
+      console.log(newUser.email)
+      console.log(newUser.password)
+      $.post("/api/signup", {
+        email: newUser.email,
+        password: newUser.password
+      })
       .then(function(data) {
-        window.location.replace("/account");
-        // If there's an error, handle it by throwing up a bootstrap alert
+        alert("Welcome to Fork Yourself! Please log in.");
+        window.location.replace("/login");
+        console.log(data)
       })
       .catch(handleLoginErr);
-  }
+      // alert("oops.... looks like we forked up this time")
+     }; 
 
-  function handleLoginErr(err) {
-    $("#alert .msg").text(err.responseJSON);
-    $("#alert").fadeIn(500);
-  }
+     function handleLoginErr(err) {
+      alert("Somethings forked up. Please try again")
+      $("#alert .msg").text(err.responseJSON);
+      $("#alert").fadeIn(500);
+      window.location.replace("/signup");
+    }
+  
 });

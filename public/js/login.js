@@ -1,35 +1,37 @@
-$(document).ready(function () {
+$(document).ready(function() {
 
-  var emailInput = $("#userEmail").val().trim();
-  var passwordInput = $("#userPassword").val().trim();
+  var yourEmail = $("#your-email");
+  var yourPassword = $("#your-password");
 
-  $("#submitBtn").click(function (event) {
+  $("#oldPerson").click(function(){
     event.preventDefault();
-    var userData = {
-      email: emailInput,
-      password: passwordInput
-    };
-
-    if (!userData.email || !userData.password) {
-      return;
-    }
-
-    loginUser(userData.email, userData.password);
-    emailInput.val("");
-    passwordInput.val("");
-  });
-
-  function loginUser(email, password) {
-    $.post("/api/login", {
-      email: email,
-      password: password
-    })
-      .then(function () {
+    oldPeople();
+    });
+    
+     function oldPeople() { 
+      var oldUser = {
+        email: yourEmail.val().trim(),
+        password: yourPassword.val().trim()
+      };
+      if (!oldUser.email || !oldUser.password) {
+        alert("Please enter a valid email and password")
+        window.location.replace("/signup");
+        return;
+      }
+      console.log(oldUser.email)
+      console.log(oldUser.password)
+      $.post("/api/login", {
+        email: oldUser.email,
+        password: oldUser.password
+      })
+      .then(function() {
         window.location.replace("/account");
       })
-      .catch(function (err) {
+      .catch(function(err) {
+        alert("Please enter a valid email and password")
         console.log(err);
       });
-  };
+     }; 
+
 
 });

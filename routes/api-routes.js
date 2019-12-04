@@ -26,6 +26,12 @@ module.exports = function(app) {
       });
   });
 
+  app.post("/api/recipes", function(req, res) {
+    db.recipes.create(req.body).then(function(dbrecipes) {
+      res.json(dbrecipes);
+    });
+  });
+
   // Route for logging user out
   app.get("/logout", function(req, res) {
     req.logout();

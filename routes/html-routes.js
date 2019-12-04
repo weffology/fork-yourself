@@ -21,6 +21,11 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
+  app.get("/search", function(req, res) {
+    // If the user already has an account send them to their account page
+    res.sendFile(path.join(__dirname, "../public/search.html"));
+  });
+
   // if user is not logged in & tries to access this route they will be redirected to the signup page
   app.get("/account", isAuthenticated, function(req, res) {
     res.sendFile(path.join(__dirname, "../public/account.html"));

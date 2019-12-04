@@ -1,7 +1,6 @@
 $(document).ready(function () {
 
-    var user = {
-    };
+    var user = {};
 
     function getValues() {
         var userName = $("#userName").val().trim();

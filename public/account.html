@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- TITLE -->
+    <title>Fork Yourself</title>
+
+    <!--STYLE-->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <!-- ICON LIBRARY -->
+    <script src="https://kit.fontawesome.com/d5fa5f8504.js" crossorigin="anonymous"></script>
+
+    <!--BOOTSTRAP-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!--JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!--JAVASCRIPT-->
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron vertical-center">
+            <h1 class="display-4">Fork Yourself!</h1>
+            <p class="lead">Put that on your plate and eat it.</p>
+            <a class="btn btn-dark btn-lg" href="/search" role="button">Search Recipes</a>
+            <a class="btn btn-dark btn-lg" href="/" role="button">Log Out</a>
+        </div>
+    </div>
+
+
+    <div id="accountInfo">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg">
+                    <h3>Saved Recipes</h3>
+                    <p id="recipe_name"></p>
+                </div>
+
+                <div class="col-lg">
+                    <h3 id="recipes_saved">Account Info</h3>
+                    <p>Username: <span class="member-name"></span></p>
+                    <p>Dietary Preferences:</p>
+                    <p>Restrictions:</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/account.js"> </script>
+</body>
+
+</html>

@@ -2,14 +2,18 @@ $(document).ready(function () {
   var user_recipes;
   var userString;
 
-  showFavorites();
-
   $.get("/api/user_data").then(function (data) {
     $(".member-name").text(data.email);
     console.log(data.email);
     console.log(data.id);
     user_ID = data.id;
   });
+  
+  $.get("/api/recipes").then(function (data) {
+    console.log(data);
+  });
+
+  showFavorites();
 
   function showFavorites(recipename) {
     userString = recipename || "";

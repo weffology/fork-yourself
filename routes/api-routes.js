@@ -45,7 +45,7 @@ module.exports = function(app) {
   });
 
   app.get("/api/recipes", function(req, res) {
-    console.log(req.session.passport.user.id)
+    console.log(req.session.passport.user.id);
     db.recipes.findAll({
       where: {
         user_ID: req.session.passport.user.id

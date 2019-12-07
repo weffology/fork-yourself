@@ -102,10 +102,10 @@ $(document).ready(function () {
       user_ID: user_ID,
       recipe_name: recipe_name,
       recipe_URL: recipe_url,
-    }
+    };
     console.log(newSavedRecipe);
     $.post("/api/recipes", newSavedRecipe, function () {
-      console.log("----- recipe saved -----");
+      alert("Recipe saved!");
     });
   });
 

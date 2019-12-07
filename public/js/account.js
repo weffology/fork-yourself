@@ -15,7 +15,8 @@ $(document).ready(function () {
     for (var i = 0; i < data.length; i++) {
       // postsToAdd.push(data[i]);
       // var newRecipeURL = recipe.recipe_URL.replace(/\/$/, "");
-      var newRecipeURL = data.recipe_URL.replace(/\/$/, "");
+      console.log(data[i]);
+      var newRecipeURL = data[i].recipe_URL.replace(/\/$/, "");
       var divRecipes = $("<div>");
       divRecipes.attr("class", "recipe");
       divRecipes.append("<p><a href=" + newRecipeURL + '>' + data.recipe_name + "</a></p>");

@@ -19,7 +19,7 @@ $(document).ready(function () {
       var newRecipeURL = data[i].recipe_URL.replace(/\/$/, "");
       var divRecipes = $("<div>");
       divRecipes.attr("class", "recipe");
-      divRecipes.append("<p><a href=" + newRecipeURL + '>' + data.recipe_name + "</a></p>");
+      divRecipes.append("<p><a href=" + newRecipeURL + '>' + data[i].recipe_name + "</a></p>");
       $("#savedRecipes").append(divRecipes);
     };
     // var newRecipeURL = recipe.recipe_URL.replace(/\/$/, "");

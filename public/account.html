@@ -10,6 +10,7 @@
 
     <!--STYLE-->
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Kanit:900&display=swap" rel="stylesheet">
 
     <!-- ICON LIBRARY -->
     <script src="https://kit.fontawesome.com/d5fa5f8504.js" crossorigin="anonymous"></script>
@@ -22,19 +23,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!--JAVASCRIPT-->
-    <script type="text/javascript" src="js/search.js"> </script>
+    <script type="text/javascript" src="js/account.js"> </script>
 
 </head>
 
 <body>
     <div class="container">
         <div class="jumbotron vertical-center">
-            <h1 class="display-4">Fork Yourself!</h1>
-            <p class="lead">Put that on your plate and eat it.</p>
-        </div>
-        <div>
+            <h1 class="display-3">FORK YOURSELF</h1>
+            <h4>Put that on your plate and eat it.</h4>
+            <br>
             <a class="btn btn-dark btn-lg" href="/search" role="button">Search Recipes</a>
-            <a class="btn btn-dark btn-lg" href="#" role="button">Log Out</a>
+            <a class="btn btn-dark btn-lg" href="/" role="button">Log Out</a>
         </div>
     </div>
 
@@ -42,19 +42,20 @@
     <div id="accountInfo">
         <div class="container">
             <div class="row">
+
                 <div class="col-lg">
                     <h3>Saved Recipes</h3>
+                    <div id="recipe_name"></div>
                 </div>
+
                 <div class="col-lg">
                     <h3>Account Info</h3>
-                    <p>Username:</p>
-                    <p>Dietary Preferences:</p>
-                    <p>Restrictions:</p>
+                    <p>Username: <span class="member-name"></span></p>
                 </div>
+
             </div>
         </div>
     </div>
-
 
 </body>
 

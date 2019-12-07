@@ -10,6 +10,7 @@
 
   <!--STYLE-->
   <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Kanit:900&display=swap" rel="stylesheet">
 
   <!-- ICON LIBRARY -->
   <script src="https://kit.fontawesome.com/d5fa5f8504.js" crossorigin="anonymous"></script>
@@ -31,13 +32,16 @@
   <div class="container">
 
     <div class="jumbotron vertical-center">
-      <h1 class="display-4">Fork Yourself!</h1>
-      <p class="lead">Put that on your plate and eat it.</p>
+      <h1 class="display-3">FORK YOURSELF</h1>
+      <h4>Put that on your plate and eat it.</h4>
+      <br>
       <a class="btn btn-dark btn-lg" href="/account" role="button">Account</a>
-      <a class="btn btn-dark btn-lg" href="#" role="button">Log Out</a>
+      <a class="btn btn-dark btn-lg" href="/search" role="button">Search Recipes</a>
+      <a class="btn btn-dark btn-lg" href="/" role="button">Log Out</a>
     </div>
     
   </div>
+
 
   <div class="container">
     <div id="foodData">
@@ -49,43 +53,41 @@
 
         <div class="form-group">
           <label for="minCal">Minimum calories:</label>
-          <input type="text" placeholder="1" id="minCal" value="1">
+          <input type="text" placeholder="Minimum calories" id="minCal" value = "1">
         </div>
 
         <div class="form-group">
           <label for="maxCal">Maximum calories:</label>
-          <input type="text" placeholder="10000" id="maxCal" value="10000">
+          <input type="text" placeholder="Maximum calories" id="maxCal" value = "10000">
         </div>
 
         <div class="form-group">
           <label for="diet-label">Select the type of meal:</label>
           <select class="form-control" id="dietLabel">
-            <option>all</option>
-            <option>balanced</option>
-            <option>high-protein</option>
-            <option>high-fiber</option>
-            <option>low-fat</option>
-            <option>low-carb</option>
-            <option>low-sodium</option>
+              <option>all</option>
+              <option>balanced</option>
+              <option>high-protein</option>
+              <option>high-fiber</option>
+              <option>low-fat</option>
+              <option>low-carb</option>
+              <option>low-sodium</option>
           </select>
         </div>
 
         <div class="form-group">
           <label for="health-label">Select your diet restrictions:</label>
           <select class="form-control" id="healthLabel">
-            <option>none</option>
-            <option>vegan</option>
-            <option>vegetarian</option>
-            <option>kosher</option>
-            <option>paleo</option>
-            <option>gluten-free</option>
-            <option>peanut-free</option>
-            <option>shellfish-free</option>
+              <option>none</option>
+              <option>vegan</option>
+              <option>vegetarian</option>
+              <option>kosher</option>
+              <option>paleo</option>
+              <option>gluten-free</option>
+              <option>peanut-free</option>
+              <option>shellfish-free</option>
           </select>
         </div>
-
-        <button type="submit" id="searchBtn"><i class="fa fa-search"></i>Search</button>
-
+        <a class="btn btn-dark btn-lg" type="submit" id="searchBtn"><i class="fa fa-search"></i>Search</a>
       </form>
     </div>
   </div>

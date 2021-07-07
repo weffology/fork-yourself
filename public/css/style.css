@@ -1,0 +1,16 @@
+body {
+    text-align: center;
+}
+
+.jumbotron {
+    background-image: url("../assets/rainbow-header.jpg");
+    background-size: cover;
+    padding: 50px;
+    color: white;
+    font-weight: bolder;
+    text-align: center;
+  }
+
+.jumbotron h1 {
+    font-family: 'Kanit', sans-serif;
+}
